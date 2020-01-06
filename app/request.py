@@ -27,3 +27,28 @@ def get_movies(category):
 
 
     return news_results
+    def process_results(news_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+
+    Args:
+        movie_list: A list of dictionaries that contain movie details
+
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    news_results = []
+    for news_item in news_list:
+        author = news_item.get('author')
+        title = news_item.get('original_title')
+        description = news_item.get('description')
+        url = news_item.get('url')
+        urlToImage= news_item.get('urlToImages')
+        publishedAt = news_item.get('publishedAt')
+        content = news_item.get('content')
+
+        if poster:
+            news_object = News(author,title,description,url,urlToImage,publishedAt,content)
+            news_results.append(news_object)
+
+    return news_results
