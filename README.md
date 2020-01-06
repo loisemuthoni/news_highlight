@@ -22,7 +22,7 @@ With the application, a user will be able to:
 - Read an entire article,Click an article,Redirected to the news source's site to read the entire article
 
 ## Set Up Instructions
--Clone this repository to your local computer.
+-Clone this repository to your local computer.https://github.com/loisemuthoni/news_highlight.git
 - Ensure you have python3.6 installed in your computer.
 - From the terminal navigate to the cloned project folder.
 - Create a virtual environment and access the folder via your virtual machine.
