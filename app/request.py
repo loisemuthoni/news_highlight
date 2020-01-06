@@ -73,3 +73,18 @@ def get_movies(category):
             movie_object = Movie(author,title,description,url,urlToImage,publishedAt,content)
 
     return movie_object
+
+    def search_news(news_name):
+    search_news_url = 'https://api.thenewsdb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
+    with urllib.request.urlopen(search_news_url) as url:
+        search_news_data = url.read()
+        search_news_response = json.loads(search_news_data)
+
+        search_news_results = None
+
+        if search_news_response['results']:
+            search_news_list = search_news_response['results']
+            search_news_results = process_results(search_news_list)
+
+
+    return search_movie_results

@@ -9,7 +9,15 @@
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
     <!-- Content block -->
-{% block content %}
+    {% block content %}
+
+    <div class="container">
+        <form>
+            <input type="text" name="news_query" placeholder="Search for a News" class="form-control">
+            <input type="submit"  value="Submit" class="btn btn-default">
+        </form>
+    
+    </div>
 
 <!-- Popular movie -->
 <h3> Popular News</h3>
