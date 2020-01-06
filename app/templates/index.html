@@ -1,19 +1,26 @@
+{% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
 <body>
-    <!-- Popular movie -->
-    <h3> Popular News</h3>
-    <ul>
-        {{ macro.displayNewsList(popular)}}
-    </ul>
-    <!-- Upcoming movie  -->
-    <h3> Upcoming News </h3>
-    <ul>
-        {{ macro.displayNewsList(upcoming)}}
-    </ul>
-    <!-- Now showing movie -->
-    <h3>Now Showing</h3>
-    <ul>
-        {{ macro.displayNewsList(now_showing)}}
-    </ul>
+    <!-- Content block -->
+{% block content %}
+
+<!-- Popular movie -->
+<h3> Popular News</h3>
+<ul>
+    {{ macro.displayNewsList(popular)}}
+</ul>
+<!-- Upcoming movie  -->
+<h3> Upcoming News </h3>
+<ul>
+    {{ macro.displayNewsList(upcoming)}}
+</ul>
+<!-- Now showing movie -->
+<h3>Now Showing</h3>
+<ul>
+    {{ macro.displayNewsList(now_showing)}}
+</ul>
+
+
+{% endblock%}
 </body>
