@@ -2,6 +2,9 @@ from .request import get_news
 from .requests import get_news,get_news
 from .requests import get_news,get_news,search_news
 from flask import render_template,request,redirect,url_for
+from .models import review
+from .forms import ReviewForm
+Review = review.Review
 
 # Views
 @app.route('/')
@@ -36,7 +39,33 @@ def search(news_name):
     title = f'search results for {news_name}'
     return render_template('search.html',news = searched_news)
 
-@app.route('/news/<int:id>')
+@app.route('/news/<int:author>')
+def news(author):
+
+    '''
+    View movie page function that returns the movie details page and its data
+    '''
+    news = get_news(author)
+    title = f'{news.title}'
+
+    return render_template('news.html',title = title,news = news)
+
+    @app.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
+def new_review(id):
+    form = ReviewForm()
+    news = get_news(author)
+
+    if form.validate_on_submit():
+        title = form.title.data
+        review = form.review.data
+        new_review = Review(news.id,title,news.poster,review)
+        new_review.save_review()
+        return redirect(url_for('news',id = news.author ))
+
+    title = f'{news.title} review'
+    return render_template('new_review.html',title = title, review_form=form, news=news)
+
+    @app.route('/news/<int:id>')
 def news(id):
 
     '''
@@ -44,5 +73,6 @@ def news(id):
     '''
     news = get_news(id)
     title = f'{news.title}'
+    reviews = Review.get_reviews(news.id)
 
-    return render_template('news.html',title = title,news = news)
+    return render_template('news.html',title = title,news = news,reviews = reviews)
