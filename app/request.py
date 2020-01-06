@@ -52,3 +52,24 @@ def get_movies(category):
             news_results.append(news_object)
 
     return news_results
+
+    def get_news(author):
+    get_news_details_url = base_url.format(author,api_key)
+
+    with urllib.request.urlopen(get_news_details_url) as url:
+        news_details_data = url.read()
+        news_details_response = json.loads(news_details_data)
+
+        news_object = None
+        if news_details_response:
+            author = movie_details_response.get('author')
+            title = movie_details_response.get('original_title')
+            description = movie_details_response.get('description')
+            url = movie_details_response.get('url')
+            urlToImage = movie_details_response.get('urlToImage')
+            publishedAt = movie_details_response.get('publishedAt')
+            content = movie_details_response.get('content')
+        
+            movie_object = Movie(author,title,description,url,urlToImage,publishedAt,content)
+
+    return movie_object
