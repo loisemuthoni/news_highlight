@@ -34,11 +34,11 @@ With the application, a user will be able to:
 
 ## Technologies Used
 
-Python v3
-Boostrap
-Flask
-License
-MIT License
+- Python v3
+- Boostrap
+- Flask
+- License
+- MIT License
 
 ## Copyright (c) 2020 Loise Muthoni
 
