@@ -1,49 +1,139 @@
-{% extends 'base.html'%}
+{% extends "layouts.html" %}
 {% import 'macros.html' as macro%}
+{% block content %}
+<div class="container">
+  <div class="jumbotron bg-dark text-center">
+    <h1 class="display-4 text-white">What's going on around you?</h1>
+    <p class="lead text-white">Get the latest news wherever you are at your own convenient just by a phone click</p>
+    <hr class="my-4">
+    <p class="text-white text-center">Going around the world to make you aware!!</p>
 
-<body>
-    <!-- Styles block -->
+  </div>
 
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
-    <!-- Content block -->
-    {% block content %}
+  <div id="general">
+    <hr>
+    <h2 class="text-center font-weight-bold text-danger">General Category Sources</h2>
+    <hr>
+    {% for source in general %}
+    <div class="card text-align-center">
+      <div class="card-header">
+        {{ source.name }}
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{source.description}}</p>
+        <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+        <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read Articles</a></span>
+      </div>
+    </div>
+    {% endfor%}
+  </div>
 
-    <div class="container">
-        <form>
-            <input type="text" name="news_query" placeholder="Search for a News" class="form-control">
-            <input type="submit"  value="Submit" class="btn btn-default">
-        </form>
-    
+  <div id="business">
+    <hr>
+    <h2 class="text-center font-weight-bold text-danger">Business Category sources</h2>
+    <hr>
+    {% for source in business %}
+    <div class="card text-align-center">
+      <div class="card-header">
+        {{ source.name }}
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{source.description}}</p>
+        <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+        <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read Articles</a></span>
+      </div>
+      {% endfor%}
     </div>
 
-<!-- Popular movie -->
-<h3> Popular News</h3>
-<ul>
-    {{ macro.displayNewsList(popular)}}
-</ul>
-<!-- Upcoming movie  -->
-<h3> Upcoming News </h3>
-<ul>
-    {{ macro.displayNewsList(upcoming)}}
-</ul>
-<!-- Now showing movie -->
-<h3>Now Showing</h3>
-<ul>
-    {{ macro.displayNewsList(now_showing)}}
-</ul>
+    <div id="technology">
+      <h2 class="text-center font-weight-bold text-danger">Technology Category sources</h2>
+      <hr>
+      {% for source in technology %}
+      <div class="card text-align-center">
+        <div class="card-header">
+          {{ source.name }}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{source.description}}</p>
+          <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+          <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read Articles</a></span>
+        </div>
+        {% endfor%}
+      </div>
 
-<!-- Displaying reviews macro -->
-{% macro displayReviews(review_list) %}
-    {% for review in review_list %}
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-        <h2> {{ review.title}} </h2>
-        <p> {{ review.review | truncate(30) }}</p>
-    </div>
-    {% endfor %}
+      <div id="sports">
+        <hr>
+        <h2 class="text-center font-weight-bold text-danger">Sports Category sources</h2>
+        <hr>
+        {% for source in sports %}
+        <div class="card text-align-center">
+          <div class="card-header">
+            {{ source.name }}
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{source.description}}</p>
+            <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+            <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read
+                Articles</a></span>
+          </div>
+          {% endfor%}
+        </div>
+
+        <div id="entertainment">
+          <hr>
+          <h2 class="text-center font-weight-bold text-danger">Entertainment Category sources</h2>
+          <hr>
+          {% for source in entertainment %}
+          <div class="card text-align-center">
+            <div class="card-header">
+              {{ source.name }}
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{source.description}}</p>
+              <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+              <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read
+                  Articles</a></span>
+            </div>
+            {% endfor%}
+          </div>
+
+          <div id="science">
+            <hr>
+            <h2 class="text-center font-weight-bold text-danger">Science Category sources</h2>
+            <hr>
+            {% for source in science %}
+            <div class="card text-align-center">
+              <div class="card-header">
+                {{ source.name }}
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{source.description}}</p>
+                <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+                <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read
+                    Articles</a></span>
+              </div>
+              {% endfor%}
+            </div>
 
 
-{% endblock%}
-</body>
+
+            <div id="health">
+              <hr>
+              <h2 class="text-center font-weight-bold text-danger">Health Category sources</h2>
+              <hr>
+              {% for source in health %}
+              <div class="card text-align-center">
+                <div class="card-header">
+                  {{ source.name }}
+                </div>
+                <div class="card-body">
+                  <p class="card-text">{{source.description}}</p>
+                  <a href="{{source.url}}" class="btn btn-primary btn-small bg-success">Visit Website</a>
+                  <span><a href="/headlines/{{source.id}}" class="btn btn-primary btn-small bg-success">Read
+                      Articles</a></span>
+                </div>
+                {% endfor%}
+              </div>
+            </div>
+          </div>
+          {% endblock content %}

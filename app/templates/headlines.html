@@ -1,0 +1,28 @@
+{% extends 'layouts.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row mt">
+        <div class="col-md-12 text-center">
+            <h2 class="font-weight-bold m-5 "> {{name|upper}} </h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        {% for headline in news %}
+        <div class="col-md-3 margin">
+            <div class="card" style="width: 18rem;">
+                <img src="{{headline.urlToImage}}" class="card-img-top" alt="Image Loading">
+                <div class="card-body">
+                  <h5 class="card-title">{{headline.title|truncate(60)}}</h5>
+                  <p class="card-text"> {{headline.author}} </p>
+                  <p class="card-text">Posted on {{headline.publishedAt}}</p>
+                  <p> {{headline.description|truncate(80)}}...
+                      <a href="{{headline.url}}" target="_blank">Read More</a>
+                  </p>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}
